@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="grid grid-cols-3 grid-rows-3 place-items-center h-screen">
+        <div class="col-start-2 row-start-2 ">
+            <div class="flex flex-col items-center justify-center">
+                <!-- Add Three links that point to admin/register , helpdesk/register and technician/register place  -->
+
+                <h1 class="text-3xl text-center font-bold mt-4 mb-5">Choose Your Role</h1>
+                <a href="admin/login">
+
+                    <button class=" group relative my-5 h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+                        <div
+                            class="absolute inset-0 w-3 bg-purple-400 transition-all duration-[250ms] ease-out group-hover:w-full">
+                        </div>
+                        <span class="relative text-black group-hover:text-white">Admin</span>
+                    </button>
+                </a>
+                <a href="helpdesk/login">
+
+                    <button class=" group relative my-5 h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+                        <div
+                            class="absolute inset-0 w-3 bg-green-400 transition-all duration-[250ms] ease-out group-hover:w-full">
+                        </div>
+                        <span class="relative text-black group-hover:text-white">Help Desk </span>
+                    </button>
+                </a>
+                <a href="technician/login">
+
+                    <button class=" group relative my-5 h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+                        <div
+                            class="absolute inset-0 w-3 bg-teal-400 transition-all duration-[250ms] ease-out group-hover:w-full">
+                        </div>
+                        <span class="relative text-black group-hover:text-white">Technician</span>
+                    </button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

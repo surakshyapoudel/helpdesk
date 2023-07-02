@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="py-1 bg-blueGray-50">
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="w-full  mb-4 px-4 mx-auto mt-6">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                            <h3 class="font-semibold text-xl text-blueGray-700">HelpDesk Users</h3>
+                        </div>
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                            <a href="/admin/helpdesk/add"
+                                class="bg-indigo-500 text-white active:bg-indigo-600 text-sm font-bold  px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button">Add</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block w-full overflow-x-auto">
+                    <table class="items-center bg-transparent w-full border-collapse ">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Id
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Name
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Username
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for user in helpdesks %}
+                            <tr>
+                                <th
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                                    {{ user[0]}}
+                                </th>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 ">
+                                    {{ user[1]}}
+                                </td>
+                                <td
+                                    class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                                    {{ user[2]}}
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="w-full  mb-4 px-4 mx-auto mt-6">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                            <h3 class="font-semibold text-xl text-blueGray-700">Technicians</h3>
+                        </div>
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                            <a href="/admin/technician/add"
+                                class="bg-indigo-500 text-white active:bg-indigo-600 text-sm font-bold  px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button">Add</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block w-full overflow-x-auto">
+                    <table class="items-center bg-transparent w-full border-collapse ">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Id
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Name
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Username
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for user in technicians %}
+
+                            <tr>
+                                <th
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                                    {{ user[0]}}
+                                </th>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 ">
+                                    {{ user[1]}}
+                                </td>
+                                <td
+                                    class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                                    {{ user[2]}}
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="w-full  mb-4 px-4 mx-auto mt-6">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                            <h3 class="font-semibold text-xl text-blueGray-700">Departments</h3>
+                        </div>
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                            <a href="/admin/department/add"
+                                class="bg-indigo-500 text-white active:bg-indigo-600 text-sm font-bold  px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button">Add</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block w-full overflow-x-auto">
+                    <table class="items-center bg-transparent w-full border-collapse ">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Id
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Name
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Service
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for department in departments %}
+                            <tr>
+                                <th
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                                    {{ department[0]}}
+                                </th>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 ">
+                                    {{ department[1]}}
+                                </td>
+                                <td
+                                    class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                                    {{ department[2]}}
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'partial/problems.html' %}
+
+
+{% endblock %}

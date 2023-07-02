@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-50">
+
+    <nav id="header" class="w-full z-30 top-10 py-1 bg-white shadow-lg border-b border-purple-400 ">
+        <div class="w-full flex items-center justify-between mt-0 px-6 py-2">
+
+
+            <div class="hidden md:flex md:items-center md:w-auto w-full " id="menu">
+                <nav>
+                    <ul class="md:flex items-center justify-between text-base text-purple-600 pt-4 md:pt-0">
+                        <li>
+                            <p class="inline-block no-underline font-medium text-lg py-2 px-4 lg:-ml-2" href="#"></p>
+                            Helpdesk Management</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+
+            {% if session["role"] %}
+            <div>
+                <a href="/{{session['role']}}/dashboard"
+                    class="inline-block no-underline font-medium text-lg py-2 px-4 lg:-ml-2">{{session["role"] | title}}
+                    Dashboard</a>
+            </div>
+
+            {% endif %}
+
+            <div class="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
+                <div class="auth flex items-center w-full md:w-full">
+                    {% if session["name"] and session["role"] %}
+                    <p>
+                        <span class="inline-block no-underline font-medium text-lg py-2 px-4 lg:-ml-2" href="#">Welcome
+                            {{session["name"]}}</span>
+                    </p>
+                    <a href="/logout"
+                        class="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Logout</a>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="bg-{{ category }}-100 mx-auto w-full md:w-96 mx-5 my-4 border border-{{ category }}-400 text-{{ category }}-700 px-4 py-3 rounded relative"
+        role="alert">
+        <span class="block sm:inline">{{message}}</span>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+
+</html>

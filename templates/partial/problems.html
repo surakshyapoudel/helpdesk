@@ -1,0 +1,347 @@
+<div class="w-full  max-w-9xl  mb-4 px-4 mx-auto mt-6">
+    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+            <div class="flex flex-wrap items-center">
+                <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                    <h3 class="font-semibold text-xl text-blueGray-700">Unsolved Issues</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="block w-full overflow-x-auto">
+            <table class="items-center bg-transparent w-full border-collapse ">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Id
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Type
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Description
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Caller Name
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Status
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued By
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued To
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued Date
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Resolved Date
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+
+                            View
+                        </th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for problem in rejected_problems %}
+                    <tr>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                            {{ problem[0]}}
+                        </th>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[13] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 ">
+                            {{ problem[7]}}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                            {{ problem[2]}}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[6] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[17] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[3] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[8] | format_datetime }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                            {% if problem[9] == None %}
+                            {{ problem[9] }}
+                            {% else %}
+                            {{ problem[9] | format_datetime }}
+                            {% endif %}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            <a href="/problem/{{problem[0]}}"
+                                class="mt-4 bg-blue-500 text-white py-2 px-6 rounded-md mx-1 hover:bg-blue-600 my-5">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="w-full  max-w-9xl  mb-4 px-4 mx-auto mt-6">
+    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+            <div class="flex flex-wrap items-center">
+                <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                    <h3 class="font-semibold text-xl text-blueGray-700">Pending Issues</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="block w-full overflow-x-auto">
+            <table class="items-center bg-transparent w-full border-collapse ">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Id
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Type
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Description
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Caller Name
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Status
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued By
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued To
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued Date
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Resolved Date
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+
+                            View
+                        </th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for problem in pending_problems %}
+                    <tr>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                            {{ problem[0]}}
+                        </th>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[13] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 ">
+                            {{ problem[7]}}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                            {{ problem[2]}}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[6] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[17] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[3] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[8] | format_datetime }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                            {% if problem[9] == None %}
+                            {{ problem[9] }}
+                            {% else %}
+                            {{ problem[9] | format_datetime }}
+                            {% endif %}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            <a href="/problem/{{problem[0]}}"
+                                class="mt-4 bg-blue-500 text-white py-2 px-6 rounded-md mx-1 hover:bg-blue-600 my-5">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="w-full  max-w-9xl  mb-4 px-4 mx-auto mt-6">
+    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+            <div class="flex flex-wrap items-center">
+                <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                    <h3 class="font-semibold text-xl text-blueGray-700">Solved Issues</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="block w-full overflow-x-auto">
+            <table class="items-center bg-transparent w-full border-collapse ">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Id
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Type
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Description
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Caller Name
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Status
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued By
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued To
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Issued Date
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Resolved Date
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+
+                            View
+                        </th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for problem in solved_problems %}
+                    <tr>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                            {{ problem[0]}}
+                        </th>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[13] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 ">
+                            {{ problem[7]}}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                            {{ problem[2]}}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[6] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[17] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[3] }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            {{ problem[8] | format_datetime }}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                            {% if problem[9] == None %}
+                            {{ problem[9] }}
+                            {% else %}
+                            {{ problem[9] | format_datetime }}
+                            {% endif %}
+                        </td>
+                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+
+                            <a href="/problem/{{problem[0]}}"
+                                class="mt-4 bg-blue-500 text-white py-2 px-6 rounded-md mx-1 hover:bg-blue-600 my-5">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

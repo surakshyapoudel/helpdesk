@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/caller/{{caller_id}}/problem/add" method="post" class="max-w-2xl mx-auto my-5 bg-white rounded-lg shadow-md p-5">
+    <div class="mt-2">
+        <label for="type" class="block font-semibold"> Problem Type </label>
+        <input type="text" placeholder="type" name="type" required id="type" readonly
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+            {% if request.args.get('type')=='software' %} value="software" {% else %} value="hardware" {% endif %}>
+    </div>
+
+    <div class="mt-2">
+        <label for="description" class="block font-semibold"> Description </label>
+        <textarea placeholder="Name" name="description" required
+            class="border w-full  px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"> </textarea>
+    </div>
+
+    <div class="mt-2">
+        <label for="device_id" class="block font-semibold">Device Id</label>
+        <input type="text" placeholder="device id" name="device_id" required id="device_id"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+    </div>
+
+    <div class="mt-2">
+        <label for="device_brand" class="block font-semibold">Device Brand</label>
+        <input type="text" placeholder="Device Brand " name="device_brand" required id="device_brand"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+    </div>
+
+    <div class="mt-2">
+        <label for="device_name" class="block font-semibold">Device Name</label>
+        <input type="text" placeholder="Device Name " name="device_name" required id="device_name"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+    </div>
+
+    {% if request.args.get('type')=='software' %}
+    <div class="mt-2">
+        <label for="software_name" class="block font-semibold">Software Name</label>
+        <input type="text" placeholder="Software Name" name="software_name" required id="software_name"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+    </div>
+    <div class="mt-2">
+        <label for="software_license" class="block font-semibold">Software License</label>
+        <input type="text" placeholder="Software License" name="software_license" required id="software_license"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+    </div>
+    {% endif %}
+    <div class="mt-2">
+        <label for="issued_to" class="block font-semibold ">Select Technician</label>
+        <select id="issued_to" required name="issued_to"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+            <option disabled>Choose a Technician</option>
+            {% for technician in technicians %}
+            <option value="{{technician[0]}}">{{technician[1]}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="mt-2 bg-green-500 text-white py-2 px-6 rounded-md hover:bg-purple-600 ">Add
+        Problem</button>
+</form>
+
+{% endblock %}
